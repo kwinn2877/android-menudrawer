@@ -104,6 +104,9 @@ public abstract class HorizontalDrawer extends DraggableDrawer {
 
                 final int pointerIndex = ev.findPointerIndex(activePointerId);
 
+                if(pointerIndex==-1) {
+                	break;
+                }
                 final float x = ev.getX(pointerIndex);
                 final float dx = x - mLastMotionX;
                 final float xDiff = Math.abs(dx);
