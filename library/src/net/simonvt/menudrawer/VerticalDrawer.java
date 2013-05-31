@@ -105,7 +105,11 @@ public abstract class VerticalDrawer extends DraggableDrawer {
                 }
 
                 final int pointerIndex = ev.findPointerIndex(activePointerId);
-
+                
+                if(pointerIndex==-1) {
+                	break; //pointer identifier data is not available
+                }
+                
                 final float x = ev.getX(pointerIndex);
                 final float dx = x - mLastMotionX;
                 final float xDiff = Math.abs(dx);
@@ -188,6 +192,10 @@ public abstract class VerticalDrawer extends DraggableDrawer {
             case MotionEvent.ACTION_MOVE: {
                 if (!mIsDragging) {
                     final int pointerIndex = ev.findPointerIndex(mActivePointerId);
+                    
+                    if(pointerIndex==-1) {
+                    	break; //pointer identifier data is not available
+                    }
 
                     final float x = ev.getX(pointerIndex);
                     final float dx = x - mLastMotionX;
